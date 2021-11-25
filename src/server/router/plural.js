@@ -254,19 +254,43 @@ module.exports = (db, name, opts) => {
 
   // POST /name
   function create(req, res, next) {
-    let resource
-    if (opts._isFake) {
-      const id = db.get(name).createId().value()
-      resource = { ...req.body, id }
-    } else {
-      resource = db.get(name).insert(req.body).value()
+    res.setHeader('Access-Control-Expose-Headers', 'Location')
+
+    function createSingle(req, res, next) {
+      let resource
+      if (opts._isFake) {
+        const id = db.get(name).createId().value()
+        resource = { ...req.body, id }
+      } else {
+        resource = db.get(name).insert(req.body).value()
+      }
+
+      res.location(`${getFullURL(req)}/${resource.id}`)
+
+      return resource
     }
 
-    res.setHeader('Access-Control-Expose-Headers', 'Location')
-    res.location(`${getFullURL(req)}/${resource.id}`)
+    function createMultiple(req, res, next) {
+      const resources = req.body.map((item) =>
+        opts._isFake
+          ? { ...item, id: db.get(name).createId().value() }
+          : db.get(name).insert(item).value()
+      )
+
+      res.location(getFullURL(req))
+
+      return resources
+    }
+
+    let resources
+    if (_.isArray(req.body)) {
+      resources = createMultiple(req, res, next)
+    } else {
+      resources = createSingle(req, res, next)
+    }
 
     res.status(201)
-    res.locals.data = resource
+    res.locals.data = resources
 
     next()
   }

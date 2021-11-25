@@ -498,6 +498,25 @@ describe('Server', () => {
       assert.strictEqual(db.posts.length, 3)
     })
 
+    test('should support batch insertion', async () => {
+      await request(server)
+        .post('/posts')
+        .send([
+          { body: 'kung', booleanValue: true, integerValue: 1 },
+          { body: 'foo', booleanValue: false, integerValue: 1 },
+          { body: 'moo', booleanValue: true, integerValue: 3 },
+        ])
+        .expect('Access-Control-Expose-Headers', 'Location')
+        .expect('Location', /posts/)
+        .expect('Content-Type', /json/)
+        .expect(201, [
+          { id: 3, body: 'kung', booleanValue: true, integerValue: 1 },
+          { id: 4, body: 'foo', booleanValue: false, integerValue: 1 },
+          { id: 5, body: 'moo', booleanValue: true, integerValue: 3 },
+        ])
+      assert.strictEqual(db.posts.length, 5)
+    })
+
     test('should support x-www-form-urlencoded', async () => {
       await request(server)
         .post('/posts')
