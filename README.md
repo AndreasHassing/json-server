@@ -1,75 +1,16 @@
-# JSON Server [![Node.js CI](https://github.com/typicode/json-server/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/typicode/json-server/actions/workflows/node.js.yml)
+# JSON Server [![Node.js CI](https://github.com/AndreasHassing/json-server-with-batch-insertion/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/typicode/json-server/actions/workflows/node.js.yml)
 
 Get a full fake REST API with __zero coding__ in __less than 30 seconds__ (seriously)
 
-Created with <3 for front-end developers who need a quick back-end for prototyping and mocking.
+## Fork details
 
-* [Egghead.io free video tutorial - Creating demo APIs with json-server](https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server)
-* [JSONPlaceholder - Live running version](https://jsonplaceholder.typicode.com)
-* [__My JSON Server__ - no installation required, use your own data](https://my-json-server.typicode.com)
+This is a fork of [`json-server` from Typicode](https://github.com/typicode/json-server/).
 
-See also:
-* :dog: [husky - Git hooks made easy](https://github.com/typicode/husky)
-* :owl: [lowdb - local JSON database](https://github.com/typicode/lowdb)
-* ✅ [xv - a beautifully simple and capable test runner](https://github.com/typicode/xv)
+### Batch insertion
 
-<p>&nbsp;</p>
+This fork adds an ability to batch inserts, such that when `POST`ing an array of documents instead of a single document to the server, multiple documents are inserted at once.
 
-<h2 align="center">Gold sponsors 🥇</h2>
-
-<p>&nbsp;</p>
-
-<p align="center">
-  <a href="https://tryretool.com/?utm_source=sponsor&utm_campaign=typicode" target="_blank">
-    <img src="https://i.imgur.com/IBItATn.png" height="70px">
-  </a>
-</p>
-
-<p>&nbsp;</p>
-
-<p align="center">
-  <a href="https://mockend.com/" target="_blank">
-    <img src="https://jsonplaceholder.typicode.com/mockend.svg" height="70px">
-  </a>
-</p>
-
-<p>&nbsp;</p>
-
-<p align="center">
-  <a href="https://www.deta.sh/?ref=typicode" target="_blank">
-    <img src="https://jsonplaceholder.typicode.com/deta.svg" height="70px">
-  </a>
-</p>
-
-<p>&nbsp;</p>
-
-<p align="center">
-  <a href="https://flowdash.com?utm_source=json_server&utm_medium=sponsor&utm_campaign=github" target="_blank">
-    <img src="https://jsonplaceholder.typicode.com/Flowdash-logo-text.png" height="70px">
-  </a>
-</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<h2 align="center">Bronze sponsors 🥉</h2>
-
-<p>&nbsp;</p>
-
-<p align="center">
-  <a href="https://github.com/pankod/refine" target="_blank">
-    <img src="https://jsonplaceholder.typicode.com/refine-logo@2x.png" height="40px">
-  </a>
-</p>
-
-<p>&nbsp;</p>
-
-[Become a sponsor and have your company logo here](https://github.com/users/typicode/sponsorship)
-
-## Sponsor
-
-__Please help me build OSS__ 👉 [GitHub Sponsors](https://github.com/sponsors/typicode) :heart:
+When the server detects a batched insertion, it will return all those new documents as an array with each of their newly minted IDs.
 
 ## Table of contents
 

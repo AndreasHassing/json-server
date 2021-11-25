@@ -1,6 +1,6 @@
 {
-  "name": "json-server",
-  "version": "0.17.0",
+  "name": "json-server-with-batch-insertion",
+  "version": "0.18.0",
   "description": "Get a full fake REST API with zero coding in less than 30 seconds",
   "main": "./lib/server/index.js",
   "bin": "./lib/cli/bin.js",
@@ -69,7 +69,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/typicode/json-server.git"
+    "url": "git://github.com/AndreasHassing/json-server-with-batch-insertion.git"
   },
   "keywords": [
     "JSON",
@@ -87,12 +87,12 @@
     "dummy",
     "sandbox"
   ],
-  "author": "Typicode <typicode@gmail.com>",
+  "author": "AndreasHassing <andreas@famhassing.dk>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/typicode/json-server/issues"
+    "url": "https://github.com/AndreasHassing/json-server-with-batch-insertion/issues"
   },
-  "homepage": "https://github.com/typicode/json-server",
+  "homepage": "https://github.com/AndreasHassing/json-server-with-batch-insertion",
   "engines": {
     "node": ">=12"
   },
